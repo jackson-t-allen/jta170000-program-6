@@ -2,8 +2,17 @@
  * Usage of CDK Matrix
  *
  * File:   cdkExample.cc
+ * Date:   5/5/19
  * Author: Jackson Allen
  * Email:  jackson.allen@utdallas.edu
+ * Course          CS 3377.502 Spring 2019
+ * Version         1.0
+ * Copyright 2019, All Rights Reserved
+ *
+ * Description     CDK Example program from Dr. Perkins
+ *
+
+
  */
 
 #include <iostream>
@@ -36,6 +45,8 @@ int main()
    * Make sure the putty terminal is large enough
    */
   window = initscr();
+  cbreak();
+  noecho();
   cdkscreen = initCDKScreen(window);
 
   /* Start CDK Colors */
@@ -63,9 +74,10 @@ int main()
   fillMatrix(myMatrix);
   drawCDKMatrix(myMatrix, true);    /* required  */
 
-  /* so we can see results */
-  sleep (10);
-
+  /* wait until keypress  */
+  
+  getchar();
+  sleep(0);
 
   // Cleanup screen
   endCDK();

@@ -1,3 +1,16 @@
+/*
+ * Filename        fillMatrix.cc
+ * Date            5/5/19
+ * Author          Jackson Allen
+ * Email           jackson.allen@utdallas.edu
+ * Course          CS 3377.502, 2019 Spring
+ * Version         1.0
+ * Copyright 2019, All Rights Reserved
+ *
+ * Description
+ *           Functions to read from bin file
+ *            into CDK matrix.
+ */
 
 
 #include "cdk.h"
