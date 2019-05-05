@@ -60,7 +60,6 @@ int main()
   /*
    * Dipslay a message
    */
-  setCDKMatrixCell(myMatrix, 2, 2, "Test Message");
   fillMatrix(myMatrix);
   drawCDKMatrix(myMatrix, true);    /* required  */
 

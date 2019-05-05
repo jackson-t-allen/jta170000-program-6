@@ -56,8 +56,8 @@ void fillMatrix(CDKMATRIX *myMatrix)
   char* currentString = new char[20];
   char* contentString = new char[20];
   BinaryFileHeader *head = new BinaryFileHeader;
+  BinaryFileRecord *record = new BinaryFileRecord;
 
-  unsigned int intIn;
 
 
   //Header 1
@@ -78,15 +78,25 @@ void fillMatrix(CDKMATRIX *myMatrix)
   setCDKMatrixCell(myMatrix,1,2,currentString);
 
   //Header 3
-  infile.read((char*)&intIn,sizeof(int));
   strcpy(currentString,"NumRecords: ");
   strcpy(contentString,to_string(head->numRecords).c_str());
   strcat(currentString,contentString);
   contentString[19]='\0';
   setCDKMatrixCell(myMatrix,1,3,currentString);
 
-  for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
+      infile.read((char*)&(record->strLength),1);
+      infile.read((char*)(record->stringBuffer),25);
 
-    }
+  strcpy(currentString,"strlen: ");
+  strcpy(contentString,to_string(record->strLength).c_str());
+  strcat(currentString,contentString);
+  contentString[19]='\0';
+  setCDKMatrixCell(myMatrix,i+2,1,currentString);
+  
+  strcpy(currentString,record->stringBuffer);
+  setCDKMatrixCell(myMatrix,i+2,2,currentString);
+  
+  }
 }
