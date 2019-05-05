@@ -23,7 +23,7 @@ CXX = g++
 CPPFLAGS = -I/scratch/perkins/include
 
 # compiler flags
-CXXFLAGS = -Wall
+CXXFLAGS = -Wall -Wno-write-strings --std=c++11
 
 # linker flags
 LDFLAGS = -L/scratch/perkins/lib
@@ -37,7 +37,7 @@ PROJECTNAME = program6
 # Enter the names of the C++ source files that you want to compile
 # with this project
 
-SRCS = cdkExample.cc
+SRCS = cdkExample.cc fillMatrix.cc
 
 # Enter the name for the executable to be created
 EXEC = program6

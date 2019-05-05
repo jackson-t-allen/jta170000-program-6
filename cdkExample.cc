@@ -1,19 +1,19 @@
 /*
  * Usage of CDK Matrix
  *
- * File:   example1.cc
- * Author: Stephen Perkins
- * Email:  stephen.perkins@utdallas.edu
+ * File:   cdkExample.cc
+ * Author: Jackson Allen
+ * Email:  jackson.allen@utdallas.edu
  */
 
 #include <iostream>
 #include "cdk.h"
+#include "program6.h"
 
-
-#define MATRIX_WIDTH 3
+#define MATRIX_WIDTH 5
 #define MATRIX_HEIGHT 3
-#define BOX_WIDTH 15
-#define MATRIX_NAME_STRING "Test Matrix"
+#define BOX_WIDTH 20
+#define MATRIX_NAME_STRING "Binary File Contents"
 
 using namespace std;
 
@@ -25,8 +25,8 @@ int main()
   CDKSCREEN	*cdkscreen;
   CDKMATRIX     *myMatrix;           // CDK Screen Matrix
 
-  const char 		*rowTitles[MATRIX_HEIGHT+1] = {"R0", "R1", "R2", "R3"};
-  const char 		*columnTitles[MATRIX_WIDTH+1] = {"C0", "C1", "C2", "C3"};
+  const char 		*rowTitles[MATRIX_HEIGHT+1] = {"R0", "a", "b", "c"};
+  const char 		*columnTitles[MATRIX_WIDTH+1] = {"C0", "a", "b", "c", "d", "e"};
   int		boxWidths[MATRIX_WIDTH+1] = {BOX_WIDTH, BOX_WIDTH, BOX_WIDTH, BOX_WIDTH};
   int		boxTypes[MATRIX_WIDTH+1] = {vMIXED, vMIXED, vMIXED, vMIXED};
 
@@ -61,6 +61,7 @@ int main()
    * Dipslay a message
    */
   setCDKMatrixCell(myMatrix, 2, 2, "Test Message");
+  fillMatrix(myMatrix);
   drawCDKMatrix(myMatrix, true);    /* required  */
 
   /* so we can see results */
