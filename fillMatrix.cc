@@ -18,7 +18,7 @@ void toHexR(unsigned int i, char* str)
   if (i==0)
     {
       str[0]='\0';
-    return;
+      return;
     }
   char* map="0123456789ABCDEF";
   str[0]=map[i%16];
@@ -55,14 +55,15 @@ void fillMatrix(CDKMATRIX *myMatrix)
 
   char* currentString = new char[20];
   char* contentString = new char[20];
+  BinaryFileHeader *head = new BinaryFileHeader;
 
   unsigned int intIn;
 
 
   //Header 1
-  infile.read((char*)&intIn,sizeof(int));
+  infile.read((char*)head,sizeof(BinaryFileHeader));
 
-  toHex(intIn,contentString);
+  toHex(head->magicNumber,contentString);
   
   strcpy(currentString,"Magic: ");
   strcat(currentString,contentString);
@@ -70,9 +71,8 @@ void fillMatrix(CDKMATRIX *myMatrix)
   setCDKMatrixCell(myMatrix,1,1,currentString);
 
   //Header 2
-  infile.read((char*)&intIn,sizeof(int));
   strcpy(currentString,"Version: ");
-  strcpy(contentString,to_string(intIn).c_str());
+  strcpy(contentString,to_string(head->versionNumber).c_str());
   strcat(currentString,contentString);
   contentString[19]='\0';
   setCDKMatrixCell(myMatrix,1,2,currentString);
@@ -80,12 +80,13 @@ void fillMatrix(CDKMATRIX *myMatrix)
   //Header 3
   infile.read((char*)&intIn,sizeof(int));
   strcpy(currentString,"NumRecords: ");
-  strcpy(contentString,to_string(intIn).c_str());
+  strcpy(contentString,to_string(head->numRecords).c_str());
   strcat(currentString,contentString);
   contentString[19]='\0';
   setCDKMatrixCell(myMatrix,1,3,currentString);
 
+  for (int i = 0; i < 4; i++)
+    {
 
-
-  
+    }
 }
